@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "environment": "file:typings/custom/environment/index.d.ts"
+  },
+  "globalDevDependencies": {}
+}

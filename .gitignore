@@ -1,0 +1,28 @@
+# npm dependencies folder
+node_modules
+
+# A hidden file created by MacOS
+.DS_Store
+
+# Using PHPStorm project settings are stored with each specific project as a set of xml files under the .idea folder.
+# If you specify the default project settings, these settings will be automatically used for each newly created project.
+.idea
+
+# Ignore any kind of logs
+*.log
+
+build/
+
+# Declarations
+typings/**
+!typings/custom
+
+*.js
+*.js.map
+
+!config/*
+!postcss.config.js
+
+# Environments
+.env.*
+!.env.environment.dist
