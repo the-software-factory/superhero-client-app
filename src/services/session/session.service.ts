@@ -1,21 +1,21 @@
 
 import { Injectable } from '@angular/core';
 
+import { CONFIG } from '../../config/config';
+
 @Injectable()
 export class SessionService {
 
-  private _token: string;
-
   get token(): string {
-    return this._token;
+    return localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY);
   }
 
   set token(value: string) {
-    this._token = value;
+    localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, value);
   }
 
   isAuthenticated(): boolean {
-    return !!this._token;
+    return !!this.token;
   }
 
 }

@@ -20,6 +20,11 @@ export class LoginPage {
    */
   password: string;
 
+  /**
+   * @var {string} A string to display if an error occurs.
+   */
+  error: string;
+
   constructor(
     private _clientApiService: ClientApiService,
     private _router: Router
@@ -30,6 +35,8 @@ export class LoginPage {
    */
   onSubmit() {
     console.log(this.username, this.password);
+
+    this.error = '';
     this._clientApiService
       .login(this.username, this.password)
       .subscribe(
@@ -37,7 +44,10 @@ export class LoginPage {
           console.log('NEXT: ', user);
           this._router.navigateByUrl('heroes');
         },
-        (error: Error) => console.log('ERROR: ', error)
+        (error: Error) => {
+          console.log('ERROR: ', error);
+          this.error = 'API error :(';
+        }
       );
   }
 
