@@ -46,6 +46,7 @@ export class ClientApiService {
         user.roles = jsonResponse['roles'];
         return user;
       })
+      .do((user: User) => this._sessionService.user = user)
       .do(() => this._sessionService.token = token);
   }
 

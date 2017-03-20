@@ -9,4 +9,7 @@ export class User {
 
   roles: string[];
 
+  getDisplayName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

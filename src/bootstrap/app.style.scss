@@ -1,12 +1,10 @@
 .sh-header {
-  padding: 10px 20px;
-  color: white;
-  background-color: #5bc0de;
-  .title {
-    font-weight: bold;
-    text-align: center;
+  background-color: darkturquoise;
+  .navbar-brand {
+    color: white;
   }
-  .account {
-    text-align: right;
+  >* .nav-link {
+    color: white;
+    cursor: pointer;
   }
 }
