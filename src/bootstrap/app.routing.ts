@@ -5,10 +5,12 @@ import { AuthenticationGuardService } from '../services/authentication-guard/aut
 
 import { LoginPage } from '../pages/login/login.component';
 import { HeroesPage } from '../pages/heroes/heroes.component';
+import { LoginGuardService } from '../services/authentication-guard/login-guard.service';
 
 export const ROUTING: Routes = [
   {
     path: 'login',
+    canActivate: [ LoginGuardService ],
     component: LoginPage
   },
   {

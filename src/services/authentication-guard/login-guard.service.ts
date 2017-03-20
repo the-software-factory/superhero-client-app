@@ -1,10 +1,10 @@
 
-import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { SessionService } from '../session/session.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AuthenticationGuardService implements CanActivate {
+export class LoginGuardService implements CanActivate {
 
   constructor(
     private _sessionService: SessionService,
@@ -12,8 +12,8 @@ export class AuthenticationGuardService implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    if (!this._sessionService.isAuthenticated()) {
-      this._router.navigateByUrl('login');
+    if (this._sessionService.isAuthenticated()) {
+      this._router.navigateByUrl('heroes');
       return false;
     }
     return true;
