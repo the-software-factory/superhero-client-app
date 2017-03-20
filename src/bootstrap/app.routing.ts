@@ -1,4 +1,15 @@
 
 import { Routes } from '@angular/router';
 
-export const ROUTING: Routes = [];
+import { LoginPage } from '../pages/login/login.component';
+
+export const ROUTING: Routes = [
+  {
+    path: 'login',
+    component: LoginPage
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
+  }
+];
