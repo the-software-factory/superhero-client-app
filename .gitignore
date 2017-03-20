@@ -14,8 +14,8 @@ node_modules
 build/
 
 # Declarations
-typings/**
-!typings/custom
+typings/globals
+typings/index.d.ts
 
 *.js
 *.js.map
