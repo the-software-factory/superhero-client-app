@@ -1,0 +1,63 @@
+
+<form ngNoForm>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text"
+               class="form-control"
+               id="name"
+               placeholder="Name"
+               required
+               minlength="4"
+               maxlength="10">
+    </div>
+
+    <div class="form-group">
+        <label for="realName">Real name</label>
+        <input type="text"
+               class="form-control"
+               id="realName"
+               placeholder="Real name"
+               required
+               minlength="4"
+               maxlength="10">
+    </div>
+
+    <div class="form-group">
+        <label for="hasCloak">Has cloak?</label>
+        <input type="checkbox"
+               class="form-control"
+               id="hasCloak">
+    </div>
+
+    <div class="form-group">
+        <label for="picture">Picture</label>
+        <input type="text"
+               class="form-control"
+               id="picture"
+               placeholder="Picture"
+               required
+               minlength="4"
+               maxlength="128">
+    </div>
+
+    <div class="form-group">
+        <label for="birthDate">Birth date</label>
+        <input type="date"
+               class="form-control"
+               id="birthDate">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
+<!--
+  name: string;
+  realName: string;
+  location: string;
+  hasCloak: boolean;
+  picture: string;
+  birthDate: Date;
+-->

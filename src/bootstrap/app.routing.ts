@@ -5,6 +5,7 @@ import { AuthenticationGuardService } from '../services/authentication-guard/aut
 
 import { LoginPage } from '../pages/login/login.component';
 import { HeroesPage } from '../pages/heroes/heroes.component';
+import { CreateHeroPage } from '../pages/create-hero/create-hero.component';
 import { LoginGuardService } from '../services/authentication-guard/login-guard.service';
 
 export const ROUTING: Routes = [
@@ -25,6 +26,10 @@ export const ROUTING: Routes = [
       {
         path: 'heroes',
         component: HeroesPage
+      },
+      {
+        path: 'create-hero',
+        component: CreateHeroPage
       }
     ]
   },

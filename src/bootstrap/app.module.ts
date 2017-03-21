@@ -12,6 +12,7 @@ import { ServicesModule } from '../services/services.module';
 import { AppComponent } from './app.component';
 import { LoginPage } from '../pages/login/login.component';
 import { HeroesPage } from '../pages/heroes/heroes.component';
+import { CreateHeroPage } from '../pages/create-hero/create-hero.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { HeroesPage } from '../pages/heroes/heroes.component';
   declarations: [
     AppComponent,
     LoginPage,
-    HeroesPage
+    HeroesPage,
+    CreateHeroPage
   ],
   providers: [],
   bootstrap: [
