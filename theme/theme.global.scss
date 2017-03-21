@@ -3,6 +3,8 @@
 // Here you can put what the app need to import as global
 // as vendor CSS or SCSS.
 
+@import "../node_modules/font-awesome/css/font-awesome.css";
+
 @import "~bootstrap/scss/bootstrap";
 
 body {
