@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ClientApiService } from '../../services/client-api/client-api.service';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.template.html',
   styleUrls: [ './login.style.scss' ]
 })
-export class LoginPage {
+export class LoginPage implements OnDestroy {
 
   /**
    * @var {string} The username we want to use for the login.
@@ -29,6 +29,10 @@ export class LoginPage {
     private _clientApiService: ClientApiService,
     private _router: Router
   ) {}
+
+  ngOnDestroy() {
+    console.log('DESTROYED');
+  }
 
   /**
    * Called when the user submit the form.
