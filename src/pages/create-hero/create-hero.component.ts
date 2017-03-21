@@ -20,7 +20,7 @@ export class CreateHeroPage {
 
     this.superHero.hasCloak = !!this.superHero.hasCloak;
 
-    console.log(this.superHero);
+    console.log(form, this.superHero);
   }
 
 }

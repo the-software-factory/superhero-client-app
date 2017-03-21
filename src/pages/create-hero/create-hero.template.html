@@ -1,7 +1,7 @@
 
-<form #heroForm="ngForm" (submit)="onSubmit(heroForm)" novalidate>
+<form #heroForm="ngForm" (submit)="heroForm.valid && onSubmit(heroForm)" novalidate>
 
-    <div class="form-group">
+    <div class="form-group" [class.has-danger]="heroForm?.submitted && heroForm?.controls?.name?.invalid">
         <label for="name">Name</label>
         <input type="text"
                class="form-control"
@@ -14,7 +14,7 @@
                maxlength="10">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.has-danger]="heroForm?.submitted && heroForm?.controls?.realName?.invalid">
         <label for="realName">Real name</label>
         <input type="text"
                class="form-control"
@@ -36,7 +36,7 @@
                [(ngModel)]="superHero.hasCloak">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.has-danger]="heroForm?.submitted && heroForm?.controls?.picture?.invalid">
         <label for="picture">Picture</label>
         <input type="text"
                class="form-control"
@@ -49,7 +49,7 @@
                maxlength="128">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.has-danger]="heroForm?.submitted && heroForm?.controls?.birthDate?.invalid">
         <label for="birthDate">Birth date</label>
         <input type="date"
                class="form-control"
