@@ -80,4 +80,41 @@ export class ClientApiService {
       .toArray();
   }
 
+  createSuperHero(superHero: Superhero): Observable<Superhero> {
+    return Observable
+      .of(this._sessionService.token)
+      .map((token: string) => {
+        let headers = new Headers();
+        headers.set('Authorization', `Basic ${token}`);
+        return headers;
+      })
+      .flatMap((headers: Headers) => {
+        let birthDate = superHero.birthDate;
+        let year = birthDate.getFullYear();
+        let month = birthDate.getMonth();
+        let date = birthDate.getDate();
+
+        return this._http.post(
+          `${this._apiBaseURL}/superheroes`,
+          {
+            name: superHero.name,
+            realName: superHero.realName,
+            hasCloak: superHero.hasCloak,
+            location: superHero.location,
+            picture: superHero.picture,
+            birthDate: `${year}/${month < 10 ? '0'+month : month}/${date < 10 ? '0'+date : date}`
+          },
+          {
+            headers,
+            responseType: ResponseContentType.Json
+          }
+        );
+      })
+      .map((response: Response) => response.json())
+      .map((data: any) => {
+        superHero.id = data.id;
+        return superHero;
+      });
+  }
+
 }

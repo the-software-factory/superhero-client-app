@@ -1,8 +1,11 @@
 
+import * as _ from 'lodash';
+
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 
 import { Superhero } from '../../models/superhero';
+import { ClientApiService } from '../../services/client-api/client-api.service';
 
 @Component({
   templateUrl: 'create-hero.template.html'
@@ -11,7 +14,10 @@ export class CreateHeroPage {
 
   superHeroFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _clientApiService: ClientApiService
+  ) {
     this.superHeroFormGroup = this._formBuilder.group({
       name: [
         '',
@@ -69,7 +75,14 @@ export class CreateHeroPage {
     superHero.picture = this.superHeroFormGroup.controls.picture.value;
     superHero.birthDate = new Date(this.superHeroFormGroup.controls.birthDate.value);
 
-    console.log('> MODEL:', superHero);
+    console.log('> MODEL:', _.clone(superHero));
+
+    this._clientApiService
+      .createSuperHero(superHero)
+      .subscribe(
+        (superHero: Superhero) => console.log('OK!', superHero),
+        (error: Error) => console.log('> ERROR!', error)
+      );
   }
 
   isInputValid(form: NgForm, inputName: string): boolean {
