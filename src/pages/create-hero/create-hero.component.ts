@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 
 import { Superhero } from '../../models/superhero';
 
@@ -9,18 +9,75 @@ import { Superhero } from '../../models/superhero';
 })
 export class CreateHeroPage {
 
-  superHero: Superhero = new Superhero();
+  superHeroFormGroup: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) {
+    this.superHeroFormGroup = this._formBuilder.group({
+      name: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(10)
+        ])
+      ],
+      realName: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(10)
+        ])
+      ],
+      location: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(128)
+        ])
+      ],
+      hasCloak: [ '' ],
+      picture: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(128)
+        ])
+      ],
+      birthDate: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^\d{4,4}-\d\d\-\d\d$/)
+        ])
+      ]
+    });
+  }
 
   onSubmit(form: NgForm) {
-    console.log(`The form is ${form.valid ? 'VALID' : 'INVALID'}`);
+    console.log(form);
+    let superHero = new Superhero();
 
-    if (form.invalid) {
+    console.log(`The form is ${this.superHeroFormGroup.valid ? 'VALID' : 'INVALID'}`);
+
+    superHero.name = this.superHeroFormGroup.controls.name.value;
+    superHero.realName = this.superHeroFormGroup.controls.realName.value;
+    superHero.hasCloak = !!this.superHeroFormGroup.controls.hasCloak.value;
+    superHero.location = this.superHeroFormGroup.controls.location.value;
+    superHero.picture = this.superHeroFormGroup.controls.picture.value;
+    superHero.birthDate = new Date(this.superHeroFormGroup.controls.birthDate.value);
+
+    console.log('> MODEL:', superHero);
+  }
+
+  isInputValid(form: NgForm, inputName: string): boolean {
+    if (!form) {
       return;
     }
 
-    this.superHero.hasCloak = !!this.superHero.hasCloak;
-
-    console.log(form, this.superHero);
+    return form.submitted && form.control.controls[inputName].invalid;
   }
 
 }

@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ROUTING } from './app.routing';
@@ -20,7 +20,8 @@ import { CreateHeroPage } from '../pages/create-hero/create-hero.component';
     HttpModule,
     FormsModule,
     RouterModule.forRoot(ROUTING),
-    ServicesModule
+    ServicesModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
