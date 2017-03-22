@@ -1,0 +1,8 @@
+
+- Aggiungere uno spinner sulla lista degli eroi
+- Aggiungere il pulsante "CREATE HERO" sulla lista
+- Fare il redirect sulla lista quando creiamo un nuovo supereroe
+- Aggiungere la possibilità di rimuovere gli eroi dalla lista
+    - Aggiugnere il pulsante per l'eliminazione dell'eroe ad ogni riga
+    - Aggiungere il metodo removeSuperHero(id: number): Observable<void> al client service
+    - Se tutto va a buon fine, eliminare l'eroe dal set locale
